@@ -134,16 +134,28 @@ public class Runner extends Application {
         
         if(frameStart != null) {
         	numbersOnly(frameStart);
+	    	frameStartInt = -1;
         	frameStart.textProperty().addListener((observable, oldValue, newValue) -> {
         	    System.out.println("fs textfield changed from " + oldValue + " to " + newValue);
-        	    frameStartInt = Integer.parseInt(newValue);
+        	    if(!newValue.isEmpty()) {
+        	    	frameStartInt = Integer.parseInt(newValue);
+        	    } else {
+        	    	frameStartInt = -1;
+            	    System.out.println("fs textfield changed from " + oldValue + " to " + frameStartInt);
+        	    }
         	});
         }
         if(frameEnd != null) {
         	numbersOnly(frameEnd);
+	    	frameEndInt = -1;
         	frameEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-        	    System.out.println("fe textfield changed from " + oldValue + " to " + newValue);
-        	    frameEndInt = Integer.parseInt(newValue);
+        	    if(!newValue.isEmpty()) {
+            	    System.out.println("fe textfield changed from " + oldValue + " to " + newValue);
+        	    	frameEndInt = Integer.parseInt(newValue);
+        	    } else {
+        	    	frameEndInt = -1;
+            	    System.out.println("fe textfield changed from " + oldValue + " to " + frameEndInt);
+        	    }
         	});
         }
     }
@@ -195,8 +207,6 @@ public class Runner extends Application {
             d = LSFileReader.readFile(path);
             path = path.split("\\\\")[path.split("\\\\").length-1];
             filename.setText(path);
-            frameStartInt = 1;
-            frameEndInt = d.getBreakdowns().get(d.getBreakdowns().size()-1).getFrameNum();
         }
         catch (IOException ex) {
             Logger.getLogger(
@@ -208,6 +218,12 @@ public class Runner extends Application {
 
     @FXML
     private void generate() throws Exception {
+        if(frameStartInt == -1) {
+        	frameStartInt = 1;
+        }
+        if(frameEndInt == -1) {
+        	frameEndInt = d.getBreakdowns().get(d.getBreakdowns().size()-1).getFrameNum();
+        }
     	System.out.println("CLICKED!");
     	d.getOutputDir().mkdirs();
     	System.out.println(d.getBreakdowns().size());
