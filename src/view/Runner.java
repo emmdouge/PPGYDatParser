@@ -98,13 +98,13 @@ public class Runner extends Application {
     	if(mouthTypes != null) {
 	    	types = new ArrayList<String>();
 	    	try {
-				Stream<Path> sp = Files.walk(Paths.get("src/assets")).filter(Files::isRegularFile)
+				Stream<Path> sp = Files.walk(Paths.get("assets")).filter(Files::isRegularFile)
 					     .map(p -> p.getParent())
 					     .distinct();
 				Iterator<Path> it = sp.iterator();
 				System.out.println(it.toString());
 				while(it.hasNext()) {
-					types.add(it.next().toString().split("\\\\")[2]);
+					types.add(it.next().toString().split("\\\\")[1]);
 				}
 				
 			} catch (IOException e) {
