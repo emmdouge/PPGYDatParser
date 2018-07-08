@@ -61,8 +61,10 @@ public class Runner extends Application {
      */
     @FXML
     private ChoiceBox<String> fileTypes;
+    
     @FXML
     private ChoiceBox<String> mouthTypes;
+    
     @FXML
     private TextField frameStart;
     private static int frameStartInt;
@@ -70,6 +72,10 @@ public class Runner extends Application {
     @FXML
     private TextField frameEnd;
     private static int frameEndInt;
+    
+    @FXML
+    private TextField bufferSize;
+    private static int bufferSizeInt;
 
     @FXML
     private Button fileButton;
@@ -158,6 +164,19 @@ public class Runner extends Application {
         	    }
         	});
         }
+        if(bufferSize != null) {
+        	numbersOnly(bufferSize);
+	    	bufferSizeInt = -1;
+	    	bufferSize.textProperty().addListener((observable, oldValue, newValue) -> {
+        	    if(!newValue.isEmpty()) {
+            	    System.out.println("bs textfield changed from " + oldValue + " to " + newValue);
+            	    bufferSizeInt = Integer.parseInt(newValue);
+        	    } else {
+        	    	bufferSizeInt = -1;
+            	    System.out.println("bs textfield changed from " + oldValue + " to " + bufferSizeInt);
+        	    }
+        	});
+        }
     }
 
     private void numbersOnly(TextField field) {
@@ -224,13 +243,20 @@ public class Runner extends Application {
         if(frameEndInt == -1) {
         	frameEndInt = d.getBreakdowns().get(d.getBreakdowns().size()-1).getFrameNum();
         }
+        if(bufferSizeInt == -1) {
+        	bufferSizeInt = 0;
+        }
     	System.out.println("CLICKED!");
     	d.getOutputDir().mkdirs();
     	System.out.println(d.getBreakdowns().size());
-    	int frameNum = frameStartInt;
+    	int frameNum = frameStartInt+bufferSizeInt;
+    	for(int i = 0; i < frameNum; i++) {	
+			File file = new File(d.getOutputDir(), "out"+i+".png");
+			Files.copy(Lip.getFile("rest", mouthTypes.getValue()).toPath(), file.toPath(), REPLACE_EXISTING);	    		
+    	}
     	for(int currBreakdownIndex = 0; currBreakdownIndex < d.getBreakdowns().size()-1; currBreakdownIndex++) {
     		int nextBreakdown = currBreakdownIndex+1;
-    		while(frameNum < d.getBreakdowns().get(nextBreakdown).getFrameNum()-1 && frameNum < frameEndInt+1) {
+    		while(frameNum < d.getBreakdowns().get(nextBreakdown).getFrameNum()+bufferSizeInt-1 && frameNum < bufferSizeInt+frameEndInt+1) {
     			Breakdown currBreakdown = d.getBreakdowns().get(currBreakdownIndex);
     			File file = new File(d.getOutputDir(), "out"+frameNum+".png");
 
