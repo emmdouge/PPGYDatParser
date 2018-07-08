@@ -119,7 +119,7 @@ public class Runner extends Application {
 			}
 	    	list = FXCollections.observableArrayList(types);
 	    	mouthTypes.setItems(list);
-	    	mouthTypes.setValue("default");
+	    	mouthTypes.setValue("def-alpha");
     	}
 
 
