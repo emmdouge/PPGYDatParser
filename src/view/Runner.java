@@ -195,6 +195,8 @@ public class Runner extends Application {
             d = LSFileReader.readFile(path);
             path = path.split("\\\\")[path.split("\\\\").length-1];
             filename.setText(path);
+            frameStartInt = 1;
+            frameEndInt = d.getBreakdowns().get(d.getBreakdowns().size()-1).getFrameNum();
         }
         catch (IOException ex) {
             Logger.getLogger(
@@ -212,7 +214,7 @@ public class Runner extends Application {
     	int frameNum = frameStartInt;
     	for(int currBreakdownIndex = 0; currBreakdownIndex < d.getBreakdowns().size()-1; currBreakdownIndex++) {
     		int nextBreakdown = currBreakdownIndex+1;
-    		while(frameNum < d.getBreakdowns().get(nextBreakdown).getFrameNum() && frameNum < frameEndInt+1) {
+    		while(frameNum < d.getBreakdowns().get(nextBreakdown).getFrameNum()-1 && frameNum < frameEndInt+1) {
     			Breakdown currBreakdown = d.getBreakdowns().get(currBreakdownIndex);
     			File file = new File(d.getOutputDir(), "out"+frameNum+".png");
 
