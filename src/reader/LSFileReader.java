@@ -40,8 +40,13 @@ public class LSFileReader {
 		currentLine = br.readLine();
 		ArrayList<Breakdown> bds = new ArrayList<Breakdown>();
 		while ((currentLine = br.readLine()) != null) {
+			System.out.println(currentLine);
 	        String[] data = currentLine.split(" ");
-			bds.add(new Breakdown(Integer.parseInt(data[0])+1, data[1]));
+	        if(data.length == 1) {
+	        	bds.add(new Breakdown(Integer.parseInt(data[0])+1, "etc"));
+	        } else {
+	        	bds.add(new Breakdown(Integer.parseInt(data[0])+1, data[1]));
+	        }
 		}
 		bds.add(new Breakdown(bds.get(bds.size()-1).getFrameNum()+1, "o"));
 		d.setBreakdowns(bds);
