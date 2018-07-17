@@ -1,9 +1,13 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import static java.nio.file.StandardCopyOption.*;
@@ -259,10 +264,16 @@ public class Runner extends Application {
     		while(frameNum < d.getBreakdowns().get(nextBreakdown).getFrameNum()+bufferSizeInt-1 && frameNum < bufferSizeInt+frameEndInt+1) {
     			Breakdown currBreakdown = d.getBreakdowns().get(currBreakdownIndex);
     			File file = new File(d.getOutputDir(), "out"+frameNum+".png");
-
-    			System.out.println(file.getAbsolutePath());
     			Files.copy(Lip.getFile(currBreakdown.getPh(), mouthTypes.getValue()).toPath(), file.toPath(), REPLACE_EXISTING);
-    			
+    		    final BufferedImage image = ImageIO.read(new URL("file:///"+file.getAbsolutePath()));
+
+		        Graphics g = image.getGraphics();
+		        g.setFont(g.getFont().deriveFont(30f));
+		        g.setColor(Color.BLACK);
+		        g.drawString(currBreakdown.getWord(), 0, 30);
+		        g.dispose();
+
+		        ImageIO.write(image, "png", file);
     			frameNum++;
     		}
     	}
