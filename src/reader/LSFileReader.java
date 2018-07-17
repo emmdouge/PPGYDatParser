@@ -50,7 +50,7 @@ public class LSFileReader {
 	        	bds.add(new Breakdown(Integer.parseInt(data[0])+1, data[1]));
 	        }
 		}
-		bds.add(new Breakdown(bds.get(bds.size()-1).getFrameNum()+1, "o"));
+		bds.add(new Breakdown(bds.get(bds.size()-1).getFrameNum()+1, "filler"));
 		d.setBreakdowns(bds);
 		
 		br.close();
@@ -61,18 +61,20 @@ public class LSFileReader {
 		FileReader r =  new FileReader(d.getFilename());
 		BufferedReader br = new BufferedReader(r);
 		String currentLine = null;
-		//eat 11 lines
-		for(int i = 0; i < 12; i++)
+		//eat 8 lines
+		for(int i = 0; i < 8; i++)
 		currentLine = br.readLine();
 		
 		ArrayList<Breakdown> bds = new ArrayList<Breakdown>();
 		while ((currentLine = br.readLine()) != null) {
 	        String[] wordData = currentLine.split(" ");
-	        for(int i = 0; i < Integer.parseInt(wordData[3]); i++) {
-	        	currentLine = br.readLine();
-		        String[] data = currentLine.split(" ");
-		        
-		        bds.add(new Breakdown(Integer.parseInt(data[0].replaceAll("\\s", ""))+1, data[1], wordData[0])); 
+	        if(wordData.length == 4) {
+		        for(int i = 0; i < Integer.parseInt(wordData[3]); i++) {
+		        	currentLine = br.readLine();
+			        String[] data = currentLine.split(" ");
+			        
+			        bds.add(new Breakdown(Integer.parseInt(data[0].replaceAll("\\s", ""))+1, data[1], wordData[0])); 
+		        }
 	        }
 		}
 		bds.add(new Breakdown(bds.get(bds.size()-1).getFrameNum()+1, "filler"));
