@@ -1,0 +1,232 @@
+Shift+F2 for a Logic editor
+
+Shift+F3 for a Node editor
+
+Shift+F4 for a Python console
+
+Shift+F5 for a 3D view
+
+Shift+F6 for a Graph editor
+
+Shift+F7 for a Properties editor
+
+Shift+F8 for a NLA editor
+
+Shift+F9 for an Outliner
+
+Shift+F10 for a UV/image editor
+
+Shift+F11 for a Text editor
+
+Shift+F12 for a Dope sheet
+
+{
+
+	Tab to switch between edit mode and object(?) mode
+
+
+
+	RMB select
+
+
+
+	a to select/deselect all
+
+}
+
+
+
+
+ctrl + space - transformation manipulation
+Hold shift while clicking on them to toggle multiple 
+
+Shift+S 
+	Cursor to Selected - Snap the 3D cursor to the object's origin
+	Selection to Cursor - Move object to cursor
+Ctrl+Shift+Alt+C - set origin to 3d cursor
+
+Ctrl+ , - set pivot point to median of selected objects
+Ctrl+ . - set pivot point to selected objects individual origins
+
+Alt+G - reset movement relative to origin
+Alt+R - reset rotation
+Alt+S - reset scale (must have scale applied to it, Ctrl+A (Sets current size of object as default size))  
+
+Alt+Z - set viewport shading to texture (for importing videos)
+Shift+Z - set viewport shading to rendered
+
+If you transform object in edit mode, the origin point will not move
+
+
+ctrl + tab = select edge mode
+
+
+
+shift + RMB to select edge (a blue one)
+
+
+
+shift + g to select by similar sharpness
+
+
+
+shift + d to duplicate and move away from mesh
+
+
+
+p seperate by selection (make sure object is selected)
+
+
+
+ctrl + e for edge loops
+
+
+
+f/j to create faces between vertices
+
+
+
+ctrl + i to select large portions of crap
+
+
+
+ctrl +  LMB for lasso select
+
+shift + space toggle fullscreen
+
+T toggle toolshelf
+
+N toggle properties
+
+
+F5 flip panels
+
+One G Pencil object in collections - multiple layers
+
+SHIFT+F9 - Outliner
+
+RMB - select/cancel
+LMB - confirm
+Alt + LMB - look around (Emulate 3 Button mouse must be checked in settings)
+. Numpad to focus
+0 Numpad - camera view
+1 Numpad - front view 
+7 Numpad - top view
+5 Numpad - set view to orthographic (shows grid if at a face e.g. left, right, top, etc)
+SHIFT+Numpad 6 to your right; to your left SHIFT+Numpad 4
+
+SHIFT+F walk and fly mode (to move camera press 0 to switch to camera view first)
+
+SHIFT+D duplicate
+
+use Ctrl + Alt + Numpad 0 - To make your active camera match up with the viewport
+Home - fit camera to viewport (unlocked camera, leaves camera when you move | locked camera, moves camera when you move 
+Shift+B - Draw a box zoom
+Alt+F - Center to Mouse position (will not work if viewport is locked to object
+Ctrl + Numpad Arrows - Panning
+Ctrl + Up Arrow - Enlarge whatever 3d view your mouse is hovering on
+Ctrl + Down Arrow - toggle  on enlarged view
+Numpad / - Isolate object
+Shift + Numpad . - Lock Viewport to Object
+Ctrl+U - save your current settings and setup as the default startup view
+File -> Load Factory Settings to reset startup files, etcF
+
+D - draw stroke
+Ctrl - erase in draw mode
+Alt+Scroll - scrub timeline next/prev keyframe
+
+blue - shadow
+red - highlights
+green - higher lights
+
+ctrl + fill tool - radial fill
+alt + fill tool - boundary lines
+
+Shift + alt + scroll - rotate the viewpoint vertically around the center of the view.
+
+Shift + A - add 
+
+R - rotate
+G - translate
+S - scale
+	z - z axis
+	x - x axis
+	y - y axis
+	axis will be highlighted
+
+Shift+Axis - exclude axis
+Press Axis again to move along the objects local x axis
+
+Base Color
+Sketch
+Shadows
+
+W Key - Specials
+	Subdivide path to get more points (only 4)
+
+Crtl + P - set camera to
+	Follow Path
+	Use outliner to select camera THEN path using shift
+
+
+Animate on timeline in camera view (do not start on frame zero)
+Just start drawing on new keyframe, it will clear the canvas for you
+
+USE OPENGL Render Animation
+
+Shift + ctrl + down - jump to first frame
+
+Bind Camera to Markers Ctrl-B
+This is used switch cameras during animation. It binds the active camera to the selected markers. First select a camera. Then select the marker(s). Then use the tool.
+
+Graph Editor -> Key -> Interpolation Mode -> Constant
+
+I - create new keyframe
+
+In dope sheet, right click select frame
+g - grab and move them
+
+Moho
+Set Interpolation to Step, 1 for frame by frame animation before starting
+Window -> Poser Parameters
+Uncheck enable drawing tools only on frame 0 at Edit -> Preferences -> Tools
+Tilda - expand workspace
+M - grab move (X) and (Y)
+Alt in Move Mode - Move Forward/Back (Z) Move mouse Up and Down
+Alt in Pose Mode - Move/Rotate entire body though the text indicating the selected body part may not be updated
+Click on Red Frame to Rotate on (X)
+Change Framerate under File -> Project Settings
+Ctrl+R - render frame
+Ctrl+Alt+Arrows Keys - Next/Prev keyframe
+Set Scale X,Y,Z to 0 for empty keyframe
+Scale stays the same until changed again
+
+Poser Pro 11
+Ctrl+E - restore object
+Ctrl+Shift+F - Restore Figure (reset?)
+Ctrl+Shift+H - Restore Camera(reset?)
+Ctrl+Alt+1 - Sillouhette
+Click on Ground, go to Object -> Lock Object
+Uncheck Animating Box in Main Camera properties to disable keyframing camera
+Numpad 2 - Select Actor Body
+Numpad 3 - Main Camera
+D  - toggle multi cameras (something must be selected/clicked)
+Y - Select Tool
+M - Direct Manipulation Tool 
+Ctrl+Shift+E - Hierarchy Editor
+Ctrl+Shift+V - Animation Pallette
+Copy/Paste Frames in Timeline for empty keyframes
+Display -> Background Color -> White
+Figure -> Use Inverse Kinematics -> uncheck them
+Move Hip to move entire body
+Edit Shortcuts - look for edit -> next Selection (use to go into different "groups of joints")
+Use Up/Down Arrow for going through each "group"
+Ctrl+B - toggle bg picture
+Ctrl+J  - Animation -> Make Movie
+Ctrl+G - Toggle Ground Visibility
+
+Krita
+Layer - Transform
+Image - trim to current layer
+Right Click layer add colorize mask fill with grey
+Add Filter Mask Colors -> Color to Alpha
