@@ -141,16 +141,45 @@ Alt+ Numpad . - Unlock Viewport to Object or N -> View -> Click X next to Lock t
 Alt+Space - change orientation to local, etc
 Make Child unclickable by unchecking mouse icon in outliner
 See bg in Rendered Viewport Shading, Set to Cycles Render, Properties Camera Icon, Film, Check Transparent box
-See bg in Rendered Viewport Shading, Set to Blender Render, Properties Camera Icon, Shading, Change Alpha to Transparent
+See bg in Rendered Viewport Shading, Set to Blender Render, Properties Camera Icon, Shading, Change Alpha Mode to Transparent
 Properties -> Lamp -> Uncheck specular and diffuse OR hide lamp, then Properties -> World -> Change Ambient Color to White
+Click Character -> N -> Display -> Check Only Rendered to Hide Bones and transform manipulators
+Set Keying Set to Whole Character 
 Ctrl+U - save your current settings and setup as the default startup view
 File -> Load Factory Settings to reset startup files, etc
 Video Editing Workspace, Add -> Scene, Add -> Image, Click Image, Edit Strip, Set Blend to Alpha Under
 In Video Editting Workspace Preview Screen, N -> Change to Rendered for Freestyle Lines in Video Editting workspace
+Add Grease Pencil Layer in Preview Screen and Enable Editting
+In Video Editting workspace, 
+	E - extend strip
+	Shift+S - snap strips
+	K - cut strips
+	Y - cut image sequences
+Select Strip - Add -> Effect Strip -> Transform
+	Right Click Position and Scale and Select Insert Keyframe
+	Go to Graph Editor -> N -> Add Noise Modifier 
+	You can restrict frame range to decide where it starts
+Use I to insert keyframe in selected channel, then press G to grab it and move it
+In Properties -> Render -> Post Processing -> Uncheck Compositing and Check Sequencer for Final Render
+Hold D - draw stroke
+Hold D+RMB - erase 
+Ctrl+D and press LMB LMB to draw a line
+Ctrl+D and press RMB RMB to draw a poly line
 
-D - draw stroke
-Ctrl - erase in draw mode
 Alt+Scroll - scrub timeline next/prev keyframe
+If bg goes black, you must return to camera perspective (Numpad 0)
+1. Make Animation
+2. Use GP to draw on Solid Viewport Shading in 3dView -> Hide 3d Objects -> OpenGL Render -> Import into VSE
+OR Normal Render with Compositing Checked in 3d View -> Import into Krita -> Animate -> Render with Composite Hidden -> Import into VSE 
+3. Make Scene a MetaMask - Ctrl+G
+Make BG cuts, instead of zoom, keep resolution the same between bgs
+4. DRAW GREASE PENCIL ON METAMASK IN VSE
+5. Mute Strips INSIDE metastrips, Mute Strip - H, Un-Mute Strips: Alt + H, OpenGL Render Animation
+You don't need to hide the scene since Freestyle will not render in OpenGL
+Add Movie on Top of Everything (should be highest channel number) Set Blend to Alpha Under
+
+
+To enable GPU rendering, go to File>User Preferences>System and under Compute Device, check CUDA.
 
 blue - shadow
 red - highlights
