@@ -28,6 +28,8 @@ public class LSFileReader {
 			readDatFile(d);
 		} else if (ext.equals("pgo")) {
 			readPGOFile(d);
+		} else if (ext.equals("osu") || ext.equals("txt")) {
+			readOSUFile(d);
 		}
 
 		return d;
@@ -82,4 +84,26 @@ public class LSFileReader {
 		
 		br.close();
 	}
+
+
+	private static void readOSUFile(Data d) throws FileNotFoundException, IOException {
+
+		FileReader r =  new FileReader(d.getFilename());
+		BufferedReader br = new BufferedReader(r);
+		String currentLine = null;
+		while ((currentLine = br.readLine()) != null && !currentLine.contains("[TimingPoints]")) { }
+		ArrayList<Breakdown> bds = new ArrayList<Breakdown>();
+    	bds.add(new Breakdown(0, "rest"));
+		while ((currentLine = br.readLine()) != null && !currentLine.contains("[HitObjects]") && !currentLine.trim().isEmpty()) {
+			System.out.println(currentLine);
+	        String[] data = currentLine.split(",");
+	        int frameNum = (Integer.parseInt(data[0])/42)+1;
+        	bds.add(new Breakdown(frameNum, "etc"));
+        	bds.add(new Breakdown(frameNum+1, "rest"));
+		}
+		d.setBreakdowns(bds);
+		
+		br.close();
+	}
+
 }
